@@ -12,7 +12,8 @@ const app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
-//rutas require('./config/routes')(app);
+//rutas 
+require('./config/routes')(app);
 //Sincronizacion
 sequelize.sync({ force: false }).then(() => {
   app.listen(port, () => {

@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Color((hexColor('#FF551F'))),
               shape: StadiumBorder(),
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) { return datosLugar(); }));
+                Navigator.push(context, MaterialPageRoute(builder: (context) { return DatosLugar(); }));
                 },
             ),
           ],

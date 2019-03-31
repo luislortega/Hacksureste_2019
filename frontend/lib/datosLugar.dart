@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import './zonaMapa.dart';
 
-class datosLugar extends StatelessWidget {
+class DatosLugar extends StatelessWidget {
   hexColor (String colorhexcode) {
     String colornew = '0xff' + colorhexcode;
     colornew = colornew.replaceAll('#', '');
@@ -43,7 +44,7 @@ class datosLugar extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: new TextField(
-              obscureText: true,
+              obscureText: false,
               decoration: new InputDecoration(
                 labelText: "Municipio"
                 ),
@@ -64,7 +65,7 @@ class datosLugar extends StatelessWidget {
               color: Color((hexColor('#FF551F'))),
               shape: StadiumBorder(),
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) { return datosLugar(); }));
+                Navigator.push(context, MaterialPageRoute(builder: (context) { return ZonaMapa(); }));
                 },
             ),
           ],

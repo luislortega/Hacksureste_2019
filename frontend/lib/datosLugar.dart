@@ -1,79 +1,61 @@
 import 'package:flutter/material.dart';
-import './datosLugar.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        primaryColor: Colors.white,
-        canvasColor: Colors.white,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),      
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class datosLugar extends StatelessWidget {
   hexColor (String colorhexcode) {
     String colornew = '0xff' + colorhexcode;
     colornew = colornew.replaceAll('#', '');
     int colorInt = int.parse(colornew);
     return colorInt;
   }
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(      
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,          
-          children: <Widget>[
-            Image.asset('assets/Logo_Bepensa.png'),
+          children: <Widget>[ 
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Datos de sitio",                              
+                  style: TextStyle(
+                    fontSize: 25,
+                  )
+                )
+              )
+            ),
             new SizedBox(
-              height: 100.0,
+              height: 40.0,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: new TextField(
                 decoration: new InputDecoration(
-                  labelText: "Id de usuario"
+                  labelText: "Estado"
                 ),
               )
             ),
             new SizedBox(
-              height: 15.0,
+              height: 30.0,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: new TextField(
-                obscureText: true,
-                decoration: new InputDecoration(
-                  labelText: "Contraseña"
-                  ),
-                )
-              ),
+              obscureText: true,
+              decoration: new InputDecoration(
+                labelText: "Municipio"
+                ),
+              )
+            ),
             new SizedBox(
               height: 40.0,
             ),
             new MaterialButton(
               minWidth: 300.0,
               child: new Text(
-                "Log in",
+                "Buscar",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18

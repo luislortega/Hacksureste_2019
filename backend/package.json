@@ -4,7 +4,8 @@
   "description": "object detection",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon src/app.js",
+    "start": "cross-env NODE_ENV=dev nodemon --exec babel-node src/app.js",
+    "prettier": "prettier --single-quote --print-width 80 --trailing-comma all --write src/**/*.js",
     "test": "test"
   },
   "keywords": [
@@ -14,7 +15,24 @@
   "author": "luis gerardo leon ortega",
   "license": "MIT",
   "dependencies": {
+    "@google-cloud/automl": "^0.1.4",
+    "@google-cloud/storage": "^2.4.3",
+    "@google-cloud/vision": "^0.25.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-equimper": "^2.2.2",
+    "eslint-config-prettier": "^4.1.0",
     "express": "^4.16.4",
-    "nodemon": "^1.18.10"
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.10",
+    "pg": "^7.9.0",
+    "pg-hstore": "^2.3.2",
+    "prettier": "^1.16.4",
+    "sequelize": "^5.2.7"
   }
 }

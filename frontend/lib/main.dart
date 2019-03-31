@@ -61,12 +61,12 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: new TextField(
-              obscureText: true,
-              decoration: new InputDecoration(
-                labelText: "Contraseña"
-                ),
-              )
-            ),
+                obscureText: true,
+                decoration: new InputDecoration(
+                  labelText: "Contraseña"
+                  ),
+                )
+              ),
             new SizedBox(
               height: 40.0,
             ),

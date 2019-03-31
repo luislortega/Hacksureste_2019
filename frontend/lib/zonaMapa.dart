@@ -34,7 +34,7 @@ class ZonaMapa extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: new Column(
-                      children: <Widget>[
+                      children: <Widget>[                        
                         Image.asset(
                           'assets/iconfinder_store_384881.png',
                           width: 70.0,

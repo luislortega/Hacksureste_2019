@@ -32,6 +32,8 @@ dev_dependencies:
 flutter:
   assets:
     - assets/Logo_Bepensa.png
+    - assets/iconfinder_dumbbell_1118213.png
+    - assets/iconfinder_store_384881.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

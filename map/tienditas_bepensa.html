@@ -1,6 +1,7 @@
 <!-- AIzaSyBzC56Now0wUNBdlUqNhJ9skT0d5uXOdHY -->
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Simple Map</title>
     <meta name="viewport" content="initial-scale=1.0">
@@ -9,6 +10,7 @@
         #map {
             height: 100%;
         }
+
         html,
         body {
             height: 100%;
@@ -26,7 +28,11 @@
         var infowindow;
         var place;
         function initMap() {
-            var posicion = new google.maps.LatLng(20.975507, -89.622176);
+
+
+
+            /* MAP */
+            var posicion = new google.maps.LatLng(21.028041, -89.641045);
             map = new google.maps.Map(document.getElementById('map'), {
                 streetViewControl: true,
                 disableDefaultUI: true,
@@ -113,35 +119,75 @@
                     }
                 ]
             });
-
+            
             var request = {
                 location: posicion,
                 radius: '7000',
-                type: ['gym']
+                type: ['store']
             };
+
+
 
             service = new google.maps.places.PlacesService(map);
 
             service.nearbySearch(request, callback);
+
+            //arreglo = Array.from(element);
+            //console.log(arreglo)
+
+            
+            var script = document.createElement('script');
+            script.src = 'js/script.js';
+            document.getElementsByTagName('head')[0].appendChild(script);
+
         }
 
-        function callback(results, status) {
+        window.eqfeed_callback = async function (results) {
+
+            for (var i = 0; i < results.features.length; i++) {
+                let latitud = results.features[i].Latitud;
+                let longitud = results.features[i].Longitud;
+                let nombre = results.features[i].Nombre;
+
+                
+                var marker = await new google.maps.Marker({
+                    position: await new google.maps.LatLng(latitud, longitud),
+                    map: map,
+                    title: nombre,
+                    tel: 9992123232,
+                    email: "a_maria@gmail.com",
+                    direccion: "Calle 63 col montejo 77 6770"
+                });
+
+                var infowindow = await new google.maps.InfoWindow();
+                   
+                google.maps.event.addListener(marker, 'click',async function () {
+                    await infowindow.setContent('<div><strong>' +marker.title + '</strong><br>' +
+                        'Telefono: ' + marker.tel + '<br> Correo:' +
+                        marker.email + '<br> Direccion: '+ marker.direccion+'</div>');
+                    await infowindow.open(map, this);
+                });
+            }
+        }
+
+
+        async function callback(results, status) {
             if (status == google.maps.places.PlacesServiceStatus.OK) {
                 for (var i = 0; i < results.length; i++) {
                     place = results[i];
-                    console.log(place);
-
-                    var marker = new google.maps.Marker({
+                    
+                    var marker = await new google.maps.Marker({
                         map: map,
                         position: place.geometry.location
                     });
 
-                    var infowindow = new google.maps.InfoWindow();
+                    var infowindow = await new google.maps.InfoWindow();
 
-                    google.maps.event.addListener(marker, 'click', function () {
-                        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-                            'Direccion: ' + place.vicinity + '</div>');
-                        infowindow.open(map, this);
+                    await google.maps.event.addListener(marker, 'click', async function () {
+                        await infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                            'Tipo de negocio: ' + place.types + '<br> Direccion:' +
+                            place.formatted_phone_number + '</div>');
+                        await infowindow.open(map, this);
                     });
                 }
             }

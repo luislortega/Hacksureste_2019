@@ -28,6 +28,7 @@
         function initMap() {
             var posicion = new google.maps.LatLng(20.975507, -89.622176);
             map = new google.maps.Map(document.getElementById('map'), {
+                streetViewControl: true,
                 disableDefaultUI: true,
                 center: posicion,
                 zoom: 15,
@@ -116,7 +117,7 @@
             var request = {
                 location: posicion,
                 radius: '7000',
-                type: ['convenience_store']
+                type: ['store']
             };
 
             service = new google.maps.places.PlacesService(map);
@@ -133,14 +134,14 @@
                     var marker = new google.maps.Marker({
                         map: map,
                         position: place.geometry.location
+                        
                     });
 
                     var infowindow = new google.maps.InfoWindow();
 
                     google.maps.event.addListener(marker, 'click', function () {
                         infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-                            'Tipo de negocio: ' + place.types + '<br> Direccion:' +
-                            place.formatted_phone_number + '</div>');
+                            'Direccion: ' + place.vicinity + '</div>');
                         infowindow.open(map, this);
                     });
                 }

@@ -40,20 +40,21 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
 
     return Scaffold(      
+      resizeToAvoidBottomPadding: false,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,          
           children: <Widget>[
             Image.asset('assets/Logo_Bepensa.png'),
             new SizedBox(
-              height: 100.0,
+              height: 50.0,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: new TextField(
                 decoration: new InputDecoration(
-                  labelText: "Id de usuario"
-                ),
+                  labelText: "Id de usuario",                
+                ),                
               )
             ),
             new SizedBox(
@@ -64,12 +65,13 @@ class _MyHomePageState extends State<MyHomePage> {
               child: new TextField(
                 obscureText: true,
                 decoration: new InputDecoration(
-                  labelText: "Contraseña"
+                  labelText: "Contraseña",
+                  
                   ),
                 )
               ),
             new SizedBox(
-              height: 40.0,
+              height: 70.0,
             ),
             new MaterialButton(
               minWidth: 300.0,

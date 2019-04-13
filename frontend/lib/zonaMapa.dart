@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -24,7 +24,7 @@ class _ZonaMapaState extends State<_ZonaMapa> {
   @override
   void initState() {
     tipo = 1;
-    super.initState();
+    super.initState();        
   }
 
   changeTipo1() {
@@ -57,7 +57,10 @@ class _ZonaMapaState extends State<_ZonaMapa> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  
+    Future.delayed(const Duration(milliseconds: 300), (){
+      changeTipo1();
+    });   
     return Scaffold(
       body: Center(
         child: Column(
@@ -65,9 +68,9 @@ class _ZonaMapaState extends State<_ZonaMapa> {
             new Column(
               children: <Widget>[
                 Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(5),
                     child: Container(
-                      height: 420.0,
+                      height: 410.0,
                       child: WebView(
                           initialUrl: url,
                           javascriptMode: JavascriptMode.unrestricted,
@@ -87,13 +90,13 @@ class _ZonaMapaState extends State<_ZonaMapa> {
               Text("Negocios asociados")
             ]),
             new SizedBox(
-              height: 10.0,
+              height: 5.0,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 5.0),
               child: new Row(children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
                   child: new Column(
                     children: <Widget>[
                       FlatButton(
@@ -118,7 +121,7 @@ class _ZonaMapaState extends State<_ZonaMapa> {
                   ),
                 ),
                 Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: new Column(
                       children: <Widget>[
                         FlatButton(
@@ -150,12 +153,12 @@ class _ZonaMapaState extends State<_ZonaMapa> {
                           child: Column(
                             children: <Widget>[
                               Image.asset(
-                                'assets/iconfinder_dumbbell_1118213.png',
-                                width: 70.0,
+                                'assets/folder.png',
+                                width: 45.0,
                                 height: 70.0,
                               ),
                               Text(
-                                "Total",
+                                "All",
                                 style: TextStyle(
                                   fontSize: 10.0,
                                 ),
